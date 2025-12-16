@@ -34,7 +34,5 @@ jobs:
 
       - name: Build Docker image (test stage)
         run: |
-          docker build \
-            --target test \
-            -t ms-customers-test \
-            ms-customers
+          docker build --target test -t ms-customers-test -f ms-customers/Dockerfile ms-customers
+
