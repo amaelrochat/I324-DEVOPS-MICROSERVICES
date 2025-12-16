@@ -8,9 +8,23 @@ name: Lint Code Base
 
 on:
   push:
-    branches: [ "main", "develop" ]
+    branches:
+      - main
+      - develop
+      - feature/*
+      - release/*
+      - hotfix/*
+    paths:
+      - "ms-customers/**"
+      - ".github/workflows/ci-ms-customers.yml"
+ 
   pull_request:
-    branches: [ "main", "develop" ]
+    branches:
+      - main
+      - develop
+      - feature/*
+      - release/*
+      - hotfix/*
 jobs:
   run-lint:
     runs-on: ubuntu-latest
