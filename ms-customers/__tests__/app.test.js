@@ -21,6 +21,7 @@ describe('Health endpoint', () => {
     });
 });
 
+
 describe('Customers endpoint', () => {
     it('GET /customers should return seeded customers', async () => {
         const res = await request(app).get('/api/v1/customers');
