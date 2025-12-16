@@ -1,0 +1,38 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Customers Service CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - feature/*
+      - release/*
+      - hotfix/*
+    paths:
+      - "ms-customers/**"
+      - ".github/workflows/ci-ms-customers.yml"
+
+  pull_request:
+    branches:
+      - main
+      - develop
+      - feature/*
+      - release/*
+      - hotfix/*
+    paths:
+      - "ms-customers/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image (test stage)
+        run: |
+          docker build --target test -t ms-customers-test -f ms-customers/Dockerfile ms-customers
+  # Construis une image Docker à partir du dossier ms-customers, arrête-toi au stage test, et nomme cette image ms-customers-test.
