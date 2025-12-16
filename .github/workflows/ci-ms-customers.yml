@@ -35,4 +35,5 @@ jobs:
       - name: Build Docker image (test stage)
         run: |
           docker build --target test -t ms-customers-test -f ms-customers/Dockerfile ms-customers
+  # Construis une image Docker à partir du dossier ms-customers, arrête-toi au stage test, et nomme cette image ms-customers-test.
 
