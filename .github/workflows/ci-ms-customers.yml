@@ -26,23 +26,15 @@ on:
       - "ms-customers/**"
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: ms-customers
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm test
+      - name: Build Docker image (test stage)
+        run: |
+          docker build \
+            --target test \
+            -t ms-customers-test \
+            ms-customers
